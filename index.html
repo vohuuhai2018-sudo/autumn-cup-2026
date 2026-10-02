@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AUTUMN CUP 2026 · Bình chọn VĐV yêu thích</title>
+<meta name="description" content="Bình chọn vận động viên được yêu thích nhất giải tennis AUTUMN CUP 2026. Mỗi thiết bị bình chọn 1 lần.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AUTUMN CUP 2026 · Bình chọn VĐV được yêu thích nhất">
+<meta property="og:description" content="Lối đánh cống hiến, truyền cảm hứng, thi đấu đẹp mắt, tinh thần thể thao cao nhất giải. Bạn chọn ai?">
+<meta property="og:url" content="https://vohuuhai2018-sudo.github.io/autumn-cup-2026/">
+<meta property="og:image" content="https://vohuuhai2018-sudo.github.io/autumn-cup-2026/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#10362A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23D9F24A'/%3E%3Cpath d='M6 5.5c5.5 5 5.5 16 0 21M26 5.5c-5.5 5-5.5 16 0 21' fill='none' stroke='%23F3F0E5' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Big+Shoulders+Display:wght@700;800;900&display=swap">
+<style>
+/* Bố cục: mặt sân cứng buổi tối. Đường kẻ sân thật (23,77 × 10,97 m) làm nền tiêu đề,
+   vàng bóng tennis = lựa chọn của bạn, cam lá phong mùa thu = người dẫn đầu. */
+:root{
+  --court:#10362A;
+  --court-2:#174634;
+  --court-3:#1F5641;
+  --court-deep:#0A271E;
+  --line:#F3F0E5;
+  --line-soft:rgba(243,240,229,.16);
+  --track:rgba(243,240,229,.10);
+  --muted:#A6C0B3;
+  --ball:#D9F24A;
+  --ball-ink:#1A2905;
+  --ball-wash:rgba(217,242,74,.09);
+  --maple:#EC7B35;
+  --maple-ink:#2B1204;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Be Vietnam Pro","Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--court);color:var(--line);font:400 16px/1.55 var(--body);padding-block:0 48px}
+body.has-bar{padding-bottom:150px}
+img{max-width:100%}
+button{font:inherit}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+
+/* ---------- Tiêu đề ---------- */
+.hero{position:relative;overflow:hidden;background:var(--court-deep);border-bottom:2px solid var(--line-soft)}
+.court{position:absolute;inset:0;width:100%;height:100%;color:var(--line);opacity:.2;pointer-events:none}
+.court *{vector-effect:non-scaling-stroke}
+.hero .wrap{position:relative;padding-block:calc(36px + env(safe-area-inset-top,0px)) 30px}
+.eyebrow{margin:0;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{margin:14px 0 0;font:900 clamp(60px,21vw,176px)/.84 var(--display);text-transform:uppercase;letter-spacing:.005em}
+h1 span{display:block}
+h1 .yr{color:var(--ball)}
+@media (min-width:760px){h1 span{display:inline}}
+.lead{margin:16px 0 0;max-width:20ch;font:800 clamp(26px,6.4vw,42px)/1.12 var(--display);text-wrap:balance}
+
+/* ---------- Tiêu chí ---------- */
+.intro{display:grid;gap:14px;padding-block:24px 8px}
+.intro p{margin:0;max-width:62ch}
+.crit{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.crit li{display:flex;align-items:center;gap:8px;padding:7px 14px 7px 9px;border:1px solid var(--line-soft);border-radius:999px;font-size:14px;font-weight:600}
+.crit svg{width:16px;height:16px;flex:none}
+.rule{font-size:14px;color:var(--muted)}
+
+.demo{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:12px 14px;border:1px dashed var(--maple);border-radius:12px;font-size:14px}
+.demo b{color:var(--maple)}
+.link-btn{appearance:none;background:none;border:0;padding:0;color:var(--ball);font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* ---------- Danh sách VĐV ---------- */
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin:28px 0 14px}
+h2{margin:0;font:800 clamp(28px,6vw,40px)/1.05 var(--display);text-wrap:balance}
+.sec-head .meta{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.search{position:relative;margin-bottom:16px;max-width:420px}
+.search input{width:100%;min-height:48px;padding:12px 16px 12px 44px;border-radius:12px;border:1px solid var(--line-soft);background:var(--court-2);color:var(--line);font:500 16px var(--body)}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{outline:2px solid var(--ball);outline-offset:1px;border-color:transparent}
+.search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:560px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:820px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:7px 7px 12px;border-radius:14px;background:var(--court-2);border:2px solid transparent;cursor:pointer;transition:border-color .15s,transform .15s,background-color .15s;-webkit-tap-highlight-color:transparent}
+.card:hover{background:var(--court-3)}
+.card:active{transform:scale(.98)}
+.card input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.card:focus-within{outline:2px solid var(--ball);outline-offset:3px}
+.card.on{border-color:var(--ball);background:var(--court-3)}
+.nm{padding-inline:5px;font-weight:600;font-size:15px;line-height:1.3;overflow-wrap:anywhere}
+.nm .pre{color:var(--muted);font-weight:500}
+.tick{position:absolute;top:13px;right:13px;width:30px;height:30px;border-radius:50%;background:var(--ball);display:none;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.tick svg{width:18px;height:18px;fill:none;stroke:var(--ball-ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.card.on .tick{display:grid;animation:pop .22s ease-out}
+@keyframes pop{from{transform:scale(.6)}to{transform:scale(1)}}
+.empty{margin:8px 0 0;color:var(--muted)}
+
+/* Ảnh đại diện: ảnh thật nếu có, không thì chữ cái đầu */
+.av{position:relative;display:grid;place-items:center;overflow:hidden;background:var(--court-3);color:var(--line)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.av .mono{font-family:var(--display);font-weight:900;line-height:1;letter-spacing:.02em}
+.av.tile{aspect-ratio:4/3;border-radius:9px;background:var(--court-deep)}
+.av.tile::before{content:"";position:absolute;left:12%;right:12%;top:0;bottom:22%;border:1.5px solid var(--line-soft);border-top:0}
+.av.tile::after{content:"";position:absolute;left:50%;top:0;bottom:22%;border-left:1.5px solid var(--line-soft)}
+.av.tile .mono{position:relative;z-index:1;font-size:clamp(40px,11vw,60px);opacity:.92}
+.av.tile img{z-index:2}
+.av.sm{width:44px;height:44px;border-radius:50%;flex:none}
+.av.sm .mono{font-size:18px}
+.av.big{position:absolute;inset:0;background:var(--court-deep)}
+.av.big .mono{font-size:clamp(84px,24vw,128px)}
+
+/* ---------- Thanh gửi phiếu ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--court-deep);border-top:1px solid var(--line-soft);box-shadow:0 -10px 30px rgba(0,0,0,.35);padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px))}
+.bar-inner{display:flex;align-items:center;gap:14px}
+.pick{flex:1;min-width:0}
+.pick small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pick strong{display:block;font:800 26px/1.15 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-note{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.btn{appearance:none;border:0;border-radius:999px;min-height:50px;padding:14px 24px;background:var(--ball);color:var(--ball-ink);font:700 16px/1 var(--body);white-space:nowrap;cursor:pointer;transition:transform .12s,filter .12s}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:2px solid var(--line);outline-offset:3px}
+.btn[disabled]{opacity:.65;cursor:progress}
+.btn.ghost{background:transparent;color:var(--line);border:1px solid var(--line-soft);min-height:44px;padding:11px 18px;font-size:15px}
+
+/* ---------- Kết quả ---------- */
+.closed{margin-top:24px;padding:12px 16px;border-radius:12px;background:var(--court-2);border:1px solid var(--line-soft);font-weight:600}
+.spot{display:grid;gap:16px;padding-block:28px 6px}
+.spot-people{display:flex;flex-wrap:wrap;gap:16px}
+.spot-people.multi{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;max-width:calc(var(--n) * 220px)}
+.spot-fig{margin:0;display:grid;gap:12px;width:min(260px,64vw);animation:rise .5s ease-out}
+.spot-people.multi .spot-fig{width:auto;min-width:0}
+@keyframes rise{from{opacity:.35;transform:translateY(10px)}to{opacity:1;transform:none}}
+.spot-av{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;box-shadow:0 0 0 3px var(--maple),0 18px 40px rgba(0,0,0,.35)}
+.spot-people.multi .av.big .mono{font-size:clamp(44px,13vw,88px)}
+.rank{position:absolute;z-index:3;top:10px;left:10px;display:grid;justify-items:center;padding:6px 11px 7px;border-radius:10px;background:var(--maple);color:var(--maple-ink);font:900 44px/.9 var(--display)}
+.rank small{font:700 10px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.spot-fig figcaption{display:grid;gap:4px}
+.spot-fig strong{font:900 clamp(34px,8.5vw,54px)/1.04 var(--display);overflow-wrap:anywhere}
+.spot-people.multi .spot-fig strong{font-size:clamp(22px,6vw,38px)}
+.spot-people.multi .rank{font-size:34px;padding:5px 9px 6px}
+@media (max-width:559px){.spot-people.multi .rank{top:6px;left:6px;font-size:22px;padding:4px 8px 5px;border-radius:7px}.spot-people.multi .rank small{display:none}.spot-people.multi .av.big .mono{font-size:clamp(40px,12vw,64px);margin-top:14%}}
+.spot-fig figcaption span{color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.more,.wait{margin:0;color:var(--muted)}
+
+.mine{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:22px;padding:14px 16px;border-radius:14px;border:1px solid var(--ball);background:var(--ball-wash)}
+.chip{display:inline-block;padding:4px 9px 3px;border-radius:999px;background:var(--ball);color:var(--ball-ink);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+.board-wrap{max-width:780px}
+.board-tools{display:flex;flex-wrap:wrap;gap:10px;margin:-2px 0 16px}
+.board{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.row{display:grid;grid-template-columns:34px 44px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 14px 10px 8px;border-radius:12px;background:var(--court-2)}
+.row .hang{font:900 26px/1 var(--display);text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
+.row.top .hang{color:var(--maple)}
+.row.zero{background:transparent;border:1px solid var(--track)}
+.row.zero .hang{opacity:.5}
+.row.mine{box-shadow:inset 0 0 0 2px var(--ball)}
+.who{min-width:0;display:grid;gap:7px}
+.who-name{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.who-name b{font-weight:600;overflow-wrap:anywhere}
+.track{display:block;height:6px;border-radius:3px;background:var(--track);overflow:hidden}
+.fill{display:block;height:100%;width:var(--w);border-radius:3px;background:var(--muted)}
+.row.top .fill{background:var(--maple)}
+.row.mine .fill{background:var(--ball)}
+.board.grow .fill{animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes grow{from{width:0}}
+.num{min-width:44px;text-align:right;font:800 26px/1 var(--display);font-variant-numeric:tabular-nums}
+.num small{display:block;margin-top:3px;font:500 12px/1 var(--body);color:var(--muted)}
+
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line-soft);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:12px 16px;border-radius:12px;background:var(--line);color:var(--court-deep);font-weight:600;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.toast.err{background:var(--maple);color:var(--maple-ink)}
+body.has-bar .toast{bottom:calc(122px + env(safe-area-inset-bottom,0px))}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ball" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.5" fill="#D9F24A"/><path d="M2.6 2.9c2.9 2.5 2.9 7.7 0 10.2M13.4 2.9c-2.9 2.5-2.9 7.7 0 10.2" fill="none" stroke="#F3F0E5" stroke-width="1.3"/></symbol>
+</svg>
+
+<header class="hero">
+  <svg class="court" viewBox="0 0 2377 1097" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="1" y="1" width="2375" height="1095"/>
+      <path d="M0 137H2377M0 960H2377M548.5 137V960M1828.5 137V960M548.5 548.5H1828.5M0 548.5H22M2355 548.5H2377"/>
+      <path d="M1188.5 -60V1157" stroke-dasharray="4 5"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">Giải tennis · Mùa thu 2026</p>
+    <h1><span>Autumn</span> <span>Cup <span class="yr">2026</span></span></h1>
+    <p class="lead">Bình chọn vận động viên được yêu thích nhất</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="demo" id="demo" hidden>
+    <span><b>Bản xem thử.</b> Chưa nối máy chủ, phiếu chỉ lưu trên máy này và số phiếu là dữ liệu mẫu.</span>
+    <button class="link-btn" id="demoReset" type="button">Xoá phiếu thử</button>
+  </div>
+
+  <section class="intro" aria-label="Tiêu chí bình chọn">
+    <p>Chọn <strong>1 người</strong> bạn thấy xứng đáng nhất, theo cảm nhận của riêng bạn:</p>
+    <ul class="crit">
+      <li><svg aria-hidden="true"><use href="#ball"/></svg>Lối đánh cống hiến</li>
+      <li><svg aria-hidden="true"><use href="#ball"/></svg>Truyền cảm hứng</li>
+      <li><svg aria-hidden="true"><use href="#ball"/></svg>Thi đấu đẹp mắt</li>
+      <li><svg aria-hidden="true"><use href="#ball"/></svg>Tinh thần thể thao cao nhất giải</li>
+    </ul>
+    <p class="rule">Mỗi thiết bị bình chọn 1 lần, gửi rồi không đổi được. Bảng xếp hạng hiện ngay sau khi bạn gửi.</p>
+  </section>
+
+  <!-- Bước 1: chọn VĐV -->
+  <section id="viewVote" aria-labelledby="hVote">
+    <div class="sec-head">
+      <h2 id="hVote">Chọn 1 vận động viên</h2>
+      <span class="meta" id="soVdv">24 VĐV</span>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Tìm tên, ví dụ: Hưng" autocomplete="off" aria-label="Tìm vận động viên">
+    </div>
+    <div class="grid" id="grid" role="radiogroup" aria-label="Danh sách vận động viên"></div>
+    <p class="empty" id="empty" hidden>Không có tên nào khớp. Thử gõ ít chữ hơn.</p>
+  </section>
+
+  <!-- Bước 2: kết quả -->
+  <section id="viewResult" aria-labelledby="hResult" hidden>
+    <div class="closed" id="closed" hidden>Bình chọn đã đóng. Kết quả bên dưới.</div>
+    <div class="mine" id="mine" hidden></div>
+    <div class="spot" id="spot"></div>
+    <div class="board-wrap">
+      <div class="sec-head">
+        <h2 id="hResult">Bảng xếp hạng</h2>
+        <span class="meta" id="tong"></span>
+      </div>
+      <div class="board-tools">
+        <button class="btn ghost" id="btnRefresh" type="button">Cập nhật</button>
+        <button class="btn ghost" id="btnShare" type="button">Gửi link cho anh em</button>
+      </div>
+      <ol class="board" id="board"></ol>
+    </div>
+  </section>
+
+  <footer>
+    <span>AUTUMN CUP 2026 · Bình chọn giao lưu, vui là chính</span>
+  </footer>
+</main>
+
+<div class="bar" id="bar" hidden>
+  <div class="wrap">
+    <div class="bar-inner">
+      <div class="pick"><small>Bạn chọn</small><strong id="pickName"></strong></div>
+      <button class="btn" id="btnVote" type="button">Gửi bình chọn</button>
+    </div>
+    <p class="bar-note">Mỗi thiết bị chỉ gửi được 1 lần.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ==== DÁN LINK WEB APP GOOGLE APPS SCRIPT (kết thúc bằng /exec) VÀO ĐÂY ==== */
+const API_URL = '';
+
+const VDV_MAC_DINH = [
+  'A. Tùng (dầu)', 'A. Tân', 'A. Hưng Motor', 'A. Hoàng', 'A. Quốc', 'A. Lành',
+  'A. Hội', 'A. Khoa IT', 'A. Hải Landscape', 'A. Hiếu', 'A. Serge', 'A. Quang',
+  'A. Đào', 'A. Hiệp', 'A. An', 'A. Phương APEC', 'A. Long Nam Long', 'A. Hải Interlab',
+  'A. Lực', 'A. Thạch', 'A. Cường', 'A. Toàn', 'A. Dương', 'A. Thành'
+];
+
+const K_THIET_BI = 'ac26.thietbi', K_PHIEU = 'ac26.phieu', K_DEMO = 'ac26.demo';
+const $ = (s) => document.querySelector(s);
+const giamChuyenDong = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const ls = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+};
+
+function taoMa() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  const a = new Uint8Array(16);
+  if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(a);
+  else for (let i = 0; i < 16; i++) a[i] = Math.random() * 256 | 0;
+  return Array.from(a, b => b.toString(16).padStart(2, '0')).join('')
+    .replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, '$1-$2-$3-$4-$5');
+}
+let THIET_BI = ls.get(K_THIET_BI);
+if (!THIET_BI || !/^[A-Za-z0-9-]{8,64}$/.test(THIET_BI)) { THIET_BI = taoMa(); ls.set(K_THIET_BI, THIET_BI); }
+
+let dsVdv = VDV_MAC_DINH.map((ten, i) => ({ ma: String(i + 1).padStart(2, '0'), ten, anh: '' }));
+let dangChon = null;
+let tt = { mo: true, cuaToi: ls.get(K_PHIEU), ketQua: null, capNhat: null };
+let vuaBau = false, dangGui = false, daVeBang = false;
+
+/* ---------- tiện ích ---------- */
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const boDau = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+
+function tachTen(ten) {
+  const m = String(ten).match(/^([A-ZĐ]\.)\s*(.+)$/);
+  return m ? { pre: m[1], main: m[2] } : { pre: '', main: String(ten) };
+}
+function kyTu(ten) {
+  const tu = tachTen(ten).main.replace(/\(.*?\)/g, ' ').trim().split(/\s+/).filter(Boolean);
+  return ((tu[0] || '?')[0] + (tu[1] ? tu[1][0] : '')).toUpperCase();
+}
+function anhUrl(raw) {
+  const s = String(raw || '').trim();
+  if (!s) return '';
+  const m = s.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{20,})/);
+  if (m) return 'https://lh3.googleusercontent.com/d/' + m[1] + '=w800';
+  return /^https:\/\//i.test(s) ? s : '';
+}
+function anhDaiDien(v, cls) {
+  const url = anhUrl(v.anh);
+  return '<span class="av ' + cls + '"><span class="mono">' + esc(kyTu(v.ten)) + '</span>' +
+    (url ? '<img src="' + esc(url) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : '') +
+    '</span>';
+}
+
+let henToast = null;
+function thongBao(text, loi) {
+  const t = $('#toast');
+  clearTimeout(henToast);
+  if (!text) { t.hidden = true; return; }
+  t.textContent = text;
+  t.classList.toggle('err', !!loi);
+  t.hidden = false;
+  henToast = setTimeout(() => { t.hidden = true; }, loi ? 7000 : 4000);
+}
+
+/* ---------- gọi máy chủ ---------- */
+async function goiApi(method, data) {
+  if (!API_URL) return demoApi(method, data);
+  const ctrl = window.AbortController ? new AbortController() : null;
+  const hen = ctrl ? setTimeout(() => ctrl.abort(), 25000) : null;
+  try {
+    const opt = ctrl ? { signal: ctrl.signal } : {};
+    const r = method === 'GET'
+      ? await fetch(API_URL + '?' + new URLSearchParams(Object.assign({}, data, { t: Date.now() })), Object.assign({ cache: 'no-store' }, opt))
+      : await fetch(API_URL, Object.assign({ method: 'POST', body: JSON.stringify(data) }, opt));
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return await r.json();
+  } finally { if (hen) clearTimeout(hen); }
+}
+
+/* Bản xem thử khi chưa có API_URL: số phiếu mẫu cố định, phiếu của bạn lưu trên máy */
+function demoApi(method, data) {
+  return new Promise(res => setTimeout(() => {
+    let cuaToi = ls.get(K_DEMO);
+    if (method === 'POST' && !cuaToi) { cuaToi = data.ma; ls.set(K_DEMO, cuaToi); }
+    const phieu = {};
+    dsVdv.forEach((v, i) => { const n = (i * 7 + 3) % 11 - 3; if (n > 0) phieu[v.ma] = n; });
+    if (cuaToi) phieu[cuaToi] = (phieu[cuaToi] || 0) + 1;
+    const tong = Object.values(phieu).reduce((a, b) => a + b, 0);
+    res({ ok: true, mo: true, vdv: null, cuaToi: cuaToi || null, ketQua: cuaToi ? { phieu, tong } : null, capNhat: new Date().toISOString() });
+  }, 350));
+}
+
+/* ---------- vẽ danh sách chọn ---------- */
+function veLuoi() {
+  $('#grid').innerHTML = dsVdv.map(v => {
+    const t = tachTen(v.ten), on = v.ma === dangChon;
+    return '<label class="card' + (on ? ' on' : '') + '" data-tim="' + esc(boDau(v.ten)) + '">' +
+      '<input type="radio" name="vdv" value="' + esc(v.ma) + '"' + (on ? ' checked' : '') + '>' +
+      anhDaiDien(v, 'tile') +
+      '<span class="nm">' + (t.pre ? '<span class="pre">' + esc(t.pre) + '</span> ' : '') + esc(t.main) + '</span>' +
+      '<span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>' +
+      '</label>';
+  }).join('');
+  $('#soVdv').textContent = dsVdv.length + ' VĐV';
+  locTen();
+}
+function locTen() {
+  const q = boDau($('#q').value.trim());
+  let con = 0;
+  document.querySelectorAll('#grid .card').forEach(c => { const hien = !q || c.dataset.tim.includes(q); c.hidden = !hien; if (hien) con++; });
+  $('#empty').hidden = con > 0;
+}
+function capNhatThanh() {
+  const v = dsVdv.find(x => x.ma === dangChon);
+  const hien = !!v && !$('#viewVote').hidden;
+  $('#bar').hidden = !hien;
+  document.body.classList.toggle('has-bar', hien);
+  if (v) $('#pickName').textContent = v.ten;
+}
+
+/* ---------- vẽ kết quả ---------- */
+function veKetQua() {
+  const kq = tt.ketQua;
+  const toi = tt.cuaToi ? dsVdv.find(v => v.ma === tt.cuaToi) : null;
+  $('#closed').hidden = tt.mo;
+
+  if (!kq) {
+    $('#spot').innerHTML = '<p class="wait">Đang tải bảng xếp hạng…</p>';
+    $('#board').innerHTML = '';
+    $('#tong').textContent = '';
+    $('#mine').hidden = !toi;
+    if (toi) $('#mine').innerHTML = '<span class="chip">Phiếu của bạn</span><span>Bạn chọn <strong>' + esc(toi.ten) + '</strong></span>';
+    return;
+  }
+
+  const ds = dsVdv.map((v, i) => Object.assign({}, v, { i, n: Number(kq.phieu[v.ma] || 0) }))
+    .sort((a, b) => b.n - a.n || a.i - b.i);
+  let hang = 0, truoc = -1;
+  ds.forEach((x, k) => { if (x.n !== truoc) { hang = k + 1; truoc = x.n; } x.hang = hang; });
+  const tong = ds.reduce((s, x) => s + x.n, 0);
+  const max = ds.length ? ds[0].n : 0;
+  const dau = max > 0 ? ds.filter(x => x.hang === 1) : [];
+  const pct = (n) => tong ? Math.round(n * 100 / tong) : 0;
+
+  // Người dẫn đầu, hạng hiện ngay trên ảnh
+  if (!dau.length) {
+    $('#spot').innerHTML = '<p class="eyebrow">Đang dẫn đầu</p><p class="wait">Chưa có phiếu nào.</p>';
+  } else {
+    const nhieu = dau.length > 1;
+    $('#spot').innerHTML =
+      '<p class="eyebrow">' + (nhieu ? 'Đồng dẫn đầu' : 'Đang dẫn đầu') + '</p>' +
+      '<div class="spot-people' + (nhieu ? ' multi' : '') + '" style="--n:' + Math.min(dau.length, 3) + '">' +
+      dau.slice(0, 3).map(x =>
+        '<figure class="spot-fig"><div class="spot-av">' + anhDaiDien(x, 'big') +
+        '<span class="rank"><small>Hạng</small>1</span></div>' +
+        '<figcaption><strong>' + esc(x.ten) + '</strong><span>' + x.n + ' phiếu · ' + pct(x.n) + '%</span></figcaption></figure>'
+      ).join('') + '</div>' +
+      (dau.length > 3 ? '<p class="more">và ' + (dau.length - 3) + ' người khác cùng ' + max + ' phiếu</p>' : '');
+  }
+
+  // Phiếu của bạn
+  const xToi = toi ? ds.find(x => x.ma === toi.ma) : null;
+  $('#mine').hidden = !xToi;
+  if (xToi) {
+    const dong = ds.filter(x => x.hang === xToi.hang).length > 1;
+    $('#mine').innerHTML = '<span class="chip">' + (vuaBau ? 'Đã gửi phiếu' : 'Phiếu của bạn') + '</span>' +
+      '<span>Bạn chọn <strong>' + esc(xToi.ten) + '</strong>, ' + (dong ? 'đồng hạng ' : 'đang xếp hạng ') +
+      '<strong>' + xToi.hang + '</strong>/' + ds.length + ' với ' + xToi.n + ' phiếu.</span>';
+  }
+
+  // Bảng xếp hạng đủ danh sách
+  const board = $('#board');
+  board.innerHTML = ds.map(x => {
+    const laToi = xToi && x.ma === xToi.ma;
+    const cls = 'row' + (x.n > 0 && x.hang === 1 ? ' top' : '') + (x.n === 0 ? ' zero' : '') + (laToi ? ' mine' : '');
+    return '<li class="' + cls + '">' +
+      '<span class="hang">' + (x.n > 0 ? x.hang : '–') + '</span>' +
+      anhDaiDien(x, 'sm') +
+      '<span class="who"><span class="who-name"><b>' + esc(x.ten) + '</b>' + (laToi ? '<span class="chip">Bạn chọn</span>' : '') + '</span>' +
+      '<span class="track"><span class="fill" style="--w:' + (max ? (x.n / max * 100).toFixed(1) : 0) + '%"></span></span></span>' +
+      '<span class="num">' + x.n + '<small>' + pct(x.n) + '%</small></span></li>';
+  }).join('');
+  if (!daVeBang) {
+    daVeBang = true;
+    board.classList.add('grow');
+    setTimeout(() => board.classList.remove('grow'), 1200);
+  }
+
+  const gio = tt.capNhat ? new Date(tt.capNhat) : new Date();
+  $('#tong').textContent = 'Tổng ' + tong + ' phiếu · cập nhật ' + gio.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+}
+
+/* ---------- chuyển màn hình ---------- */
+function hienBau() {
+  $('#viewVote').hidden = false;
+  $('#viewResult').hidden = true;
+  capNhatThanh();
+}
+function hienKetQua() {
+  $('#viewVote').hidden = true;
+  $('#viewResult').hidden = false;
+  capNhatThanh();
+  veKetQua();
+}
+
+function apDung(d) {
+  if (Array.isArray(d.vdv) && d.vdv.length && JSON.stringify(d.vdv) !== JSON.stringify(dsVdv)) {
+    dsVdv = d.vdv;
+    if (dangChon && !dsVdv.some(v => v.ma === dangChon)) dangChon = null;
+    veLuoi();
+  }
+  tt = { mo: d.mo !== false, cuaToi: d.cuaToi || null, ketQua: d.ketQua || null, capNhat: d.capNhat || null };
+  if (tt.cuaToi) ls.set(K_PHIEU, tt.cuaToi); else ls.del(K_PHIEU);
+  if (tt.cuaToi || !tt.mo) hienKetQua(); else hienBau();
+}
+
+async function taiTrangThai(im) {
+  try {
+    const d = await goiApi('GET', { action: 'state', device: THIET_BI });
+    if (!d || (d.ok === false && d.loi === 'may_chu')) throw new Error(d && d.thongBao);
+    apDung(d);
+  } catch (e) {
+    if (!im) thongBao('Chưa kết nối được máy chủ bình chọn. Kiểm tra mạng rồi tải lại trang.', true);
+  }
+}
+
+async function guiPhieu() {
+  if (!dangChon || dangGui) return;
+  dangGui = true;
+  const b = $('#btnVote');
+  b.disabled = true; b.textContent = 'Đang gửi…';
+  try {
+    const d = await goiApi('POST', { action: 'vote', device: THIET_BI, ma: dangChon, ua: navigator.userAgent.slice(0, 200) });
+    if (d.ok) {
+      vuaBau = true;
+      apDung(d);
+      thongBao('Đã ghi nhận phiếu của bạn. Cảm ơn!');
+      window.scrollTo({ top: Math.max(0, $('#viewResult').offsetTop - 12), behavior: giamChuyenDong ? 'auto' : 'smooth' });
+    } else if (d.loi === 'da_bau' || d.loi === 'dong') {
+      apDung(d);
+      thongBao(d.thongBao || 'Thiết bị này đã bình chọn rồi.');
+    } else {
+      thongBao(d.thongBao || 'Chưa gửi được phiếu. Bấm gửi lại.', true);
+    }
+  } catch (e) {
+    thongBao('Chưa gửi được phiếu. Kiểm tra mạng rồi bấm gửi lại.', true);
+  } finally {
+    dangGui = false;
+    b.disabled = false; b.textContent = 'Gửi bình chọn';
+  }
+}
+
+async function chiaSe() {
+  const url = location.href.split('#')[0];
+  if (navigator.share) {
+    try { await navigator.share({ title: 'AUTUMN CUP 2026', text: 'Bình chọn VĐV được yêu thích nhất AUTUMN CUP 2026', url }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  try { await navigator.clipboard.writeText(url); thongBao('Đã chép link. Dán vào nhóm Zalo để mời anh em.'); }
+  catch (e) { thongBao(url); }
+}
+
+/* ---------- sự kiện ---------- */
+$('#grid').addEventListener('change', (e) => {
+  if (e.target.name !== 'vdv') return;
+  dangChon = e.target.value;
+  document.querySelectorAll('#grid .card').forEach(c => c.classList.toggle('on', c.querySelector('input').checked));
+  capNhatThanh();
+});
+$('#q').addEventListener('input', locTen);
+$('#btnVote').addEventListener('click', guiPhieu);
+$('#btnRefresh').addEventListener('click', async () => { await taiTrangThai(false); thongBao('Đã cập nhật.'); });
+$('#btnShare').addEventListener('click', chiaSe);
+$('#demoReset').addEventListener('click', () => { ls.del(K_DEMO); ls.del(K_PHIEU); location.reload(); });
+
+setInterval(() => {
+  if (document.visibilityState === 'visible' && !$('#viewResult').hidden && !dangGui) taiTrangThai(true);
+}, 20000);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !$('#viewResult').hidden) taiTrangThai(true);
+});
+
+/* ---------- khởi động ---------- */
+veLuoi();
+$('#demo').hidden = !!API_URL;
+if (tt.cuaToi) hienKetQua(); else hienBau();
+taiTrangThai(false);
+})();
+</script>
+</body>
+</html>
