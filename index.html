@@ -513,6 +513,8 @@ async function guiPhieu() {
   dangGui = true;
   const b = $('#btnVote');
   b.disabled = true; b.textContent = 'Đang gửi…';
+  const note = document.querySelector('.bar-note');
+  note.textContent = 'Đang ghi phiếu, chờ vài giây và đừng tắt trang.';
   try {
     const d = await goiApi('POST', { action: 'vote', device: THIET_BI, ma: dangChon, ua: navigator.userAgent.slice(0, 200) });
     if (d.ok) {
@@ -531,6 +533,7 @@ async function guiPhieu() {
   } finally {
     dangGui = false;
     b.disabled = false; b.textContent = 'Gửi bình chọn';
+    note.textContent = 'Mỗi thiết bị chỉ gửi được 1 lần.';
   }
 }
 
