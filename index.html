@@ -350,7 +350,7 @@ function thongBao(text, loi) {
 async function goiApi(method, data) {
   if (!API_URL) return demoApi(method, data);
   const ctrl = window.AbortController ? new AbortController() : null;
-  const hen = ctrl ? setTimeout(() => ctrl.abort(), 25000) : null;
+  const hen = ctrl ? setTimeout(() => ctrl.abort(), 45000) : null;
   try {
     const opt = ctrl ? { signal: ctrl.signal } : {};
     const r = method === 'GET'
@@ -516,7 +516,12 @@ async function guiPhieu() {
   const note = document.querySelector('.bar-note');
   note.textContent = 'Đang ghi phiếu, chờ vài giây và đừng tắt trang.';
   try {
-    const d = await goiApi('POST', { action: 'vote', device: THIET_BI, ma: dangChon, ua: navigator.userAgent.slice(0, 200) });
+    const phieu = { action: 'vote', device: THIET_BI, ma: dangChon, ua: navigator.userAgent.slice(0, 200) };
+    let d = await goiApi('POST', phieu);
+    if (!d.ok && d.loi === 'ban') {
+      await new Promise(r => setTimeout(r, 1500 + Math.random() * 2000));
+      d = await goiApi('POST', phieu);
+    }
     if (d.ok) {
       vuaBau = true;
       apDung(d);
